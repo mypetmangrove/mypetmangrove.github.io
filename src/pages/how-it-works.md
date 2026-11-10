@@ -52,8 +52,8 @@ sections:
     button:
       label: Browse the lesson library
       url: /teacher-resources/
-    image: /images/site/step-learn.jpg
-    image_alt: A student measuring a seedling
+    image: /images/site/field-specimen.jpg
+    image_alt: Two students in hard hats examining a specimen on a research vessel
   - type: split
     anchor: replant
     background: mist

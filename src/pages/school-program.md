@@ -24,8 +24,8 @@ sections:
     link:
       label: See the full program
       url: /how-it-works/
-    image: /images/site/classroom.jpg
-    image_alt: Students and a teacher looking closely at young plants
+    image: /images/site/youth-ocean-summit.jpg
+    image_alt: Students at the 2026 Youth Ocean Conservation Summit
   - type: cards
     background: mist
     heading: What teachers get

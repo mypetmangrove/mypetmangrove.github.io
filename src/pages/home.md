@@ -26,8 +26,8 @@ sections:
     link:
       label: How the program works
       url: /how-it-works/
-    image: /images/site/classroom.jpg
-    image_alt: Students and a teacher examining young plants with a magnifying glass
+    image: /images/site/field-boat-sorting.jpg
+    image_alt: Students sorting field samples on a boat beside a mangrove shoreline
   - type: split
     background: white
     image_side: left
@@ -72,8 +72,8 @@ sections:
       - title: Learn
         subtitle: Learn the science. Lead the change.
         body: Students uncover how mangroves store carbon, protect coastlines, and sustain marine life.
-        image: /images/site/step-learn.jpg
-        image_alt: A student measuring a seedling with a ruler
+        image: /images/site/field-specimen.jpg
+        image_alt: Two students in hard hats examining a specimen on a research vessel
         url: /how-it-works/#learn
       - title: Replant
         subtitle: From classroom cup to coastal forest
@@ -113,8 +113,8 @@ sections:
     link:
       label: Watch the Slingshot video
       url: /about/#video
-    image: /images/site/alex-award.jpg
-    image_alt: Alex Webster holding the National Geographic Slingshot Challenge Top Honors award
+    image: /images/site/alex-headshot.jpg
+    image_alt: Portrait of Alex Webster, founder of My Pet Mangrove, wearing award medals
     badge: "**National Geographic Society**<br>2026 Slingshot Challenge Top Honors"
   - type: quote
     background: white
@@ -156,8 +156,8 @@ sections:
     items:
       - title: School programs
         body: Have questions about starting a school program?
-        image: /images/site/involve-schools.jpg
-        image_alt: Students working with seedlings at a classroom table
+        image: /images/site/youth-ocean-summit.jpg
+        image_alt: Students at the 2026 Youth Ocean Conservation Summit
         url: /school-program/
       - title: Planting days
         body: Volunteer at a planting event.

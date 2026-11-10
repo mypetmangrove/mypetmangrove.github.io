@@ -38,8 +38,37 @@ sections:
       Alex envisions a future where every student becomes both a scientist and a steward, proving
       that sustainability begins not in policy or theory, but in curiosity, care, and the simple act
       of planting a seed.
-    image: /images/site/alex-award.jpg
-    image_alt: Alex Webster holding the National Geographic Slingshot Challenge award
+    image: /images/site/alex-headshot.jpg
+    image_alt: Portrait of Alex Webster, founder of My Pet Mangrove, wearing award medals
+  - type: gallery
+    background: mist
+    heading: From the field
+    intro: Research, fieldwork, and outreach behind My Pet Mangrove.
+    images:
+      - image: /images/site/field-sediment-grab.jpg
+        alt: Alex deploying a sediment sampler from a boat near a mangrove shoreline
+        caption: Sediment sampling in the Indian River Lagoon
+      - image: /images/site/field-sampling.jpg
+        alt: Researchers in hard hats filling sample bottles on a ship deck
+        caption: Water sampling at sea
+      - image: /images/site/lab-pipette.jpg
+        alt: Alex pipetting a sample in a lab
+        caption: In the lab
+      - image: /images/site/research-poster.jpg
+        alt: Alex presenting a research poster at the University of Florida
+        caption: Presenting research
+      - image: /images/site/reef-dive.jpg
+        alt: Alex scuba diving over a coral reef
+        caption: Underwater fieldwork
+      - image: /images/site/ssef-speech.jpg
+        alt: Alex speaking at the State Science and Engineering Fair of Florida
+        caption: Speaking at the State Science and Engineering Fair
+      - image: /images/site/convening-booth.jpg
+        alt: Alex at the My Pet Mangrove table at National Geographic's Connect to Create convening
+        caption: National Geographic Connect to Create convening
+      - image: /images/site/award-certificate.jpg
+        alt: Alex holding a certificate of recognition
+        caption: Recognized for community impact
   - type: video
     anchor: video
     background: navy
