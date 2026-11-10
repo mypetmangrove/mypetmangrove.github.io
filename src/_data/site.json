@@ -50,7 +50,7 @@
     }
   ],
   "portal": {
-    "supabase_url": "",
-    "supabase_key": ""
+    "supabase_url": "https://dblgaocbpkuktndunoyk.supabase.co",
+    "supabase_key": "sb_publishable_0p0U9HhQ5EP1FtQo9tx8Og_eMiuETD5"
   }
 }
