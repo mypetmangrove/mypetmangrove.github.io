@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- set pageTitle = (title + " | " + site.name) if (title and page.url != "/") else (site.name + " | " + site.slogan) %}
+  {%- set pageDescription = description or site.description %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
+  <meta property="og:image" content="{{ (social_image or '/images/site/social-card.jpg') | absoluteUrl(site.url) }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#143258">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/site/favicon-48.png">
+  <link rel="apple-touch-icon" href="/images/site/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  {%- if extra_css %}<link rel="stylesheet" href="{{ extra_css }}">{% endif %}
+  {%- if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+  <script>window.MPM = {{ { supabaseUrl: site.portal.supabase_url, supabaseKey: site.portal.supabase_key, email: site.email } | json | safe }};</script>
+  {%- if page.url == "/" %}
+  <script type="application/ld+json">{{ {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": site.name,
+    "url": site.url,
+    "logo": "/images/site/logo-emblem.png" | absoluteUrl(site.url),
+    "email": site.email,
+    "description": site.description,
+    "sameAs": [site.instagram, site.youtube]
+  } | json | safe }}</script>
+  {%- endif %}
+</head>
+<body class="{{ body_class }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="brand" href="/" aria-label="{{ site.name }} home">
+        <img class="brand__mark" src="/images/site/logo-emblem.png" alt="" width="52" height="53">
+        <span class="brand__word">My Pet<br>Mangrove</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main" data-nav>
+        <ul class="site-nav__list">
+          {%- for item in site.menu %}
+          <li class="site-nav__item{% if item.children and item.children.length %} has-children{% endif %}">
+            {%- if item.children and item.children.length %}
+            <button class="site-nav__link" type="button" aria-expanded="false" data-submenu-toggle>
+              {{ item.label }}
+              <svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </button>
+            <ul class="submenu">
+              {%- for child in item.children %}
+              <li><a href="{{ child.url }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.label }}</a></li>
+              {%- endfor %}
+            </ul>
+            {%- else %}
+            <a class="site-nav__link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+            {%- endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+        <div class="site-nav__actions">
+          <a class="text-link text-link--light" href="/teacher-portal/">Teacher login</a>
+          <a class="btn btn--sky" href="{{ site.adopt_url or '/school-program/' }}">Adopt a Mangrove</a>
+          <a class="btn btn--outline-light" href="{{ site.donate_url or '/get-involved/#support' }}">Donate</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    {{ content | safe }}
+  </main>
+
+  {%- if not hide_footer %}
+  <footer class="site-footer">
+    <section class="footer-news" aria-labelledby="newsletter-heading">
+      <div class="wrap footer-news__inner">
+        <div>
+          <h2 class="footer-news__heading" id="newsletter-heading">{{ site.newsletter_heading }}</h2>
+          <p>{{ site.newsletter_text }}</p>
+        </div>
+        <form class="newsletter" data-newsletter novalidate>
+          <label class="newsletter__label" for="newsletter-email">Email address</label>
+          <div class="newsletter__row">
+            <input id="newsletter-email" name="email" type="email" autocomplete="email" required>
+            <button class="btn btn--sky" type="submit">Sign up</button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <div class="wrap footer-main">
+      <div class="footer-brand">
+        <img src="/images/site/logo-emblem.png" alt="" width="96" height="98">
+        <p class="footer-brand__word">My Pet Mangrove</p>
+        <p>{{ site.footer_blurb }}</p>
+        <p><a class="footer-email" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        <p class="footer-social">
+          {%- if site.instagram %}<a href="{{ site.instagram }}" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg></a>{% endif %}
+          {%- if site.youtube %}<a href="{{ site.youtube }}" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></a>{% endif %}
+          {%- if site.linkedin %}<a href="{{ site.linkedin }}" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6.5 9.5v8M6.5 6.5v.01M10.5 17.5v-4.5a2.5 2.5 0 0 1 5 0v4.5M10.5 9.5v8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></a>{% endif %}
+        </p>
+      </div>
+      <div class="footer-cols">
+        {%- for item in site.menu %}
+        <div class="footer-col">
+          <h2 class="footer-col__heading">{{ item.label }}</h2>
+          <ul>
+            {%- for child in item.children %}<li><a href="{{ child.url }}">{{ child.label }}</a></li>{% endfor %}
+          </ul>
+        </div>
+        {%- endfor %}
+        <div class="footer-col">
+          <h2 class="footer-col__heading">Teachers</h2>
+          <ul>
+            <li><a href="/teacher-portal/">Teacher login</a></li>
+            <li><a href="/teacher-resources/">Lesson library</a></li>
+            <li><a href="/school-program/">Bring us to your school</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <div class="wrap footer-base__inner">
+        <p>© {{ build.year }} My Pet Mangrove</p>
+        <p><a href="/privacy/">Privacy</a></p>
+      </div>
+    </div>
+  </footer>
+  {%- endif %}
+
+  <script src="/assets/js/site.js" defer></script>
+  {%- if extra_js %}
+  {%- for src in extra_js %}<script src="{{ src }}" defer></script>{% endfor %}
+  {%- endif %}
+</body>
+</html>

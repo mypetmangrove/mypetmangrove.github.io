@@ -1,0 +1,41 @@
+{%- set upcomingEvents = collections.events | upcoming %}
+{%- set pastEvents = collections.events | past %}
+{% include "blocks/_open.njk" %}
+  <div class="wrap">
+    <div class="block-head{% if s.intro %} block-head--split{% endif %}">
+      {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+      {%- if s.intro %}<div class="block-head__intro">{{ s.intro | md | safe }}</div>{% endif %}
+    </div>
+    {%- if upcomingEvents.length %}
+    <ul class="events">
+      {%- for e in upcomingEvents %}
+      <li class="event">
+        <p class="event__date"><span>{{ e.data.date | shortDate }}</span></p>
+        <div class="event__body">
+          <h3 class="event__title">{{ e.data.title }}</h3>
+          <ul class="event__meta">
+            {%- if e.data.time %}<li>{{ e.data.time }}</li>{% endif %}
+            {%- if e.data.location %}<li>{{ e.data.location }}</li>{% endif %}
+            {%- if e.data.ages %}<li>{{ e.data.ages }}</li>{% endif %}
+          </ul>
+          {%- if e.data.bring %}<p class="event__bring"><strong>Bring:</strong> {{ e.data.bring }}</p>{% endif %}
+          {%- if e.content %}<div class="prose">{{ e.content | safe }}</div>{% endif %}
+        </div>
+        <a class="btn btn--blue" href="{{ e.data.rsvp_url or '/contact/?topic=volunteer&event=' + (e.data.title | urlencode) }}">RSVP</a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <div class="empty-note">
+      <p>{{ s.empty_text or "New planting days are announced as tides and partner sites are confirmed." }}</p>
+      <a class="arrow-link" href="#newsletter-email">Get planting day news by email</a>
+    </div>
+    {%- endif %}
+    {%- if s.show_past and pastEvents.length %}
+    <h3 class="h3 past-heading">Past planting days</h3>
+    <ul class="past-events">
+      {%- for e in pastEvents %}<li><time datetime="{{ e.data.date | isoDate }}">{{ e.data.date | readableDate }}</time> {{ e.data.title }}{% if e.data.location %}, {{ e.data.location }}{% endif %}</li>{% endfor %}
+    </ul>
+    {%- endif %}
+  </div>
+</section>

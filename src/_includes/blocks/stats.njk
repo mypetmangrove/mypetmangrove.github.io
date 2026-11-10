@@ -1,0 +1,18 @@
+{%- set hasValues = false %}
+{%- for item in s.items %}{% if item.value %}{% set hasValues = true %}{% endif %}{% endfor %}
+<section class="block block--stats bg-{{ s.background or 'white' }}{% if hasValues %} has-stats{% endif %}"{% if s.anchor %} id="{{ s.anchor }}"{% endif %}>
+  <div class="wrap" data-stats-block>
+    {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+    {%- if s.intro %}<p class="lead block-intro">{{ s.intro }}</p>{% endif %}
+    <dl class="stats">
+      {%- for item in s.items %}
+      <div class="stat"{% if item.live %} data-live-stat="{{ item.live }}"{% if not item.value %} hidden{% endif %}{% endif %}>
+        <dt class="stat__label">{{ item.label }}</dt>
+        <dd class="stat__value" data-stat-value>{{ item.value }}</dd>
+        {%- if item.note %}<dd class="stat__note">{{ item.note | mdInline | safe }}</dd>{% endif %}
+      </div>
+      {%- endfor %}
+    </dl>
+    {%- if s.source %}<p class="source-note">{{ s.source | mdInline | safe }}</p>{% endif %}
+  </div>
+</section>

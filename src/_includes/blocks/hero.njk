@@ -1,0 +1,26 @@
+<section class="hero"{% if s.anchor %} id="{{ s.anchor }}"{% endif %}>
+  <div class="hero__copy">
+    {%- if s.kicker %}<p class="hero__kicker">{{ s.kicker }}</p>{% endif %}
+    <h1 class="hero__title">{{ s.heading }}</h1>
+    {%- if s.text %}<p class="hero__text">{{ s.text }}</p>{% endif %}
+    {%- if s.buttons and s.buttons.length %}
+    <div class="btn-row">
+      {%- for b in s.buttons %}
+      <a class="btn {{ 'btn--sky' if loop.first else 'btn--outline-light' }}" href="{{ b.url }}">{{ b.label }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+    {%- if s.note %}<p class="hero__note">{{ s.note | mdInline | safe }}</p>{% endif %}
+  </div>
+  {%- if s.image %}
+  <figure class="hero__media">
+    <img src="{{ s.image }}" alt="{{ s.image_alt }}" fetchpriority="high">
+    {%- if s.image_caption %}<figcaption>{{ s.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {%- endif %}
+  <svg class="tideline" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 22 C 240 8, 480 8, 720 20 S 1200 34, 1440 18" />
+    <path d="M0 38 C 260 26, 520 28, 760 36 S 1220 46, 1440 34" />
+    <path d="M0 52 C 280 44, 560 46, 800 51 S 1240 58, 1440 50" />
+  </svg>
+</section>

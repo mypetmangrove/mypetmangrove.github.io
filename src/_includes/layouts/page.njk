@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+---
+{%- for section in sections %}
+{%- set s = section %}
+{%- set sectionIndex = loop.index %}
+{% include "blocks/" + section.type + ".njk" ignore missing %}
+{%- endfor %}
+{{ content | safe }}

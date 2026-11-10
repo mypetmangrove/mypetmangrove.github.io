@@ -1,0 +1,8 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap">
+    <figure class="pull-quote">
+      <blockquote><p>{{ s.text }}</p></blockquote>
+      {%- if s.attribution %}<figcaption>{{ s.attribution | mdInline | safe }}</figcaption>{% endif %}
+    </figure>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap">
+    {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+    {%- if s.intro %}<p class="lead block-intro">{{ s.intro }}</p>{% endif %}
+    <ul class="press">
+      {%- for p in press %}
+      <li class="press__item">
+        <p class="press__meta">{{ p.outlet }}{% if p.kind %}<span class="press__kind">{{ p.kind }}</span>{% endif %}{% if p.date %}<time datetime="{{ p.date }}">{{ p.date | readableDate }}</time>{% endif %}</p>
+        <a class="press__title" href="{{ p.url }}">{{ p.title }}</a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

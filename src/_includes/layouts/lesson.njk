@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-header page-header--compact">
+  <div class="wrap page-header__inner">
+    <p class="crumbs"><a href="/teacher-resources/">Lesson library</a></p>
+    <h1 class="page-header__title">{{ title }}</h1>
+    {%- if summary %}<p class="page-header__text">{{ summary }}</p>{% endif %}
+  </div>
+</section>
+<section class="block bg-white">
+  <div class="wrap lesson-layout">
+    <aside class="lesson-facts" aria-label="Lesson details">
+      <dl>
+        <div><dt>Grades</dt><dd>{{ grades | gradeRange }}</dd></div>
+        {%- if topic %}<div><dt>Topic</dt><dd>{{ topic }}</dd></div>{% endif %}
+        {%- if duration %}<div><dt>Time</dt><dd>{{ duration }}</dd></div>{% endif %}
+        {%- if standards %}<div><dt>Standards</dt><dd>{{ standards }}</dd></div>{% endif %}
+      </dl>
+      {%- if link %}<a class="btn btn--blue btn--block" href="{{ link }}">{{ link_label or "Open lesson" }}</a>{% endif %}
+      {%- if files and files.length %}
+      <h2 class="h4">Downloads</h2>
+      <ul class="downloads">
+        {%- for f in files %}<li><a href="{{ f }}" download>{{ f.split('/') | last }}</a></li>{% endfor %}
+      </ul>
+      {%- endif %}
+    </aside>
+    <div class="lesson-body">
+      {%- if materials %}
+      <h2 class="h3">Materials</h2>
+      <div class="prose">{{ materials | md | safe }}</div>
+      {%- endif %}
+      {%- if content | trim %}<div class="prose">{{ content | safe }}</div>{% endif %}
+      <p class="lesson-help">Questions about this lesson, or adapting it for your class? <a href="/contact/?topic=lesson">Ask us</a>.</p>
+    </div>
+  </div>
+</section>

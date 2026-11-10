@@ -1,0 +1,16 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-header page-header--compact">
+  <div class="wrap page-header__inner">
+    <p class="crumbs"><a href="/news/">News and recognition</a></p>
+    <h1 class="page-header__title">{{ title }}</h1>
+    <p class="page-header__text"><time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>{% if category %}, {{ category }}{% endif %}</p>
+  </div>
+</section>
+<article class="block bg-white">
+  <div class="wrap wrap--narrow">
+    {%- if image %}<img class="post-image" src="{{ image }}" alt="{{ image_alt }}">{% endif %}
+    <div class="prose">{{ content | safe }}</div>
+  </div>
+</article>

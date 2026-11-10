@@ -1,0 +1,16 @@
+<section class="page-header{% if s.image %} page-header--image{% endif %}"{% if s.anchor %} id="{{ s.anchor }}"{% endif %}>
+  {%- if s.image %}<img class="page-header__bg" src="{{ s.image }}" alt="">{% endif %}
+  <div class="wrap page-header__inner">
+    <h1 class="page-header__title">{{ s.heading or title }}</h1>
+    {%- if s.text %}<p class="page-header__text">{{ s.text }}</p>{% endif %}
+    {%- if s.buttons and s.buttons.length %}
+    <div class="btn-row">
+      {%- for b in s.buttons %}<a class="btn {{ 'btn--sky' if loop.first else 'btn--outline-light' }}" href="{{ b.url }}">{{ b.label }}</a>{% endfor %}
+    </div>
+    {%- endif %}
+  </div>
+  <svg class="tideline tideline--short" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 16 C 240 6, 480 6, 720 14 S 1200 24, 1440 12" />
+    <path d="M0 30 C 260 22, 520 24, 760 28 S 1220 36, 1440 26" />
+  </svg>
+</section>

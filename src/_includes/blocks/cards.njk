@@ -1,0 +1,22 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap">
+    {%- if s.heading or s.intro %}
+    <div class="block-head{% if s.intro and s.heading %} block-head--split{% endif %}">
+      {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+      {%- if s.intro %}<div class="block-head__intro">{{ s.intro | md | safe }}</div>{% endif %}
+    </div>
+    {%- endif %}
+    <ul class="cards cards--{{ s.items.length if s.items.length < 4 else 4 }}">
+      {%- for item in s.items %}
+      <li class="card">
+        {%- if item.image %}<img class="card__img" src="{{ item.image }}" alt="{{ item.image_alt }}" loading="lazy">{% endif %}
+        <div class="card__body">
+          <h3 class="card__title">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+          {%- if item.body %}<div class="card__text">{{ item.body | md | safe }}</div>{% endif %}
+          {%- if item.url %}<p class="card__more" aria-hidden="true">{{ item.link_label or "Learn more" }}</p>{% endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

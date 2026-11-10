@@ -1,0 +1,26 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap split split--{{ s.image_side or 'right' }}{% if s.boxed %} split--boxed{% endif %}">
+    <div class="split__copy">
+      {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+      {%- if s.subheading %}<p class="split__sub">{{ s.subheading }}</p>{% endif %}
+      {%- if s.lead %}<p class="lead">{{ s.lead }}</p>{% endif %}
+      {%- if s.tags and s.tags.length %}
+      <ul class="tags">{% for t in s.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+      {%- endif %}
+      {%- if s.body %}<div class="prose">{{ s.body | md | safe }}</div>{% endif %}
+      {%- if s.callout %}<p class="callout">{{ s.callout }}</p>{% endif %}
+      {%- if (s.button and s.button.label) or (s.link and s.link.label) %}
+      <div class="btn-row">
+        {%- if s.button and s.button.label %}<a class="btn {{ 'btn--sky' if s.background == 'navy' else 'btn--blue' }}" href="{{ s.button.url }}">{{ s.button.label }}</a>{% endif %}
+        {%- if s.link and s.link.label %}<a class="arrow-link" href="{{ s.link.url }}">{{ s.link.label }}</a>{% endif %}
+      </div>
+      {%- endif %}
+    </div>
+    {%- if s.image %}
+    <figure class="split__media">
+      <img src="{{ s.image }}" alt="{{ s.image_alt }}" loading="lazy">
+      {%- if s.badge %}<figcaption class="badge">{{ s.badge | mdInline | safe }}</figcaption>{% endif %}
+    </figure>
+    {%- endif %}
+  </div>
+</section>

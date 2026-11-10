@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+title: News and recognition
+description: News, recognition, and press coverage for My Pet Mangrove.
+permalink: /news/
+---
+<section class="page-header">
+  <div class="wrap page-header__inner">
+    <h1 class="page-header__title">News and recognition</h1>
+  </div>
+</section>
+<section class="block bg-white">
+  <div class="wrap">
+    <ul class="news-list">
+      {%- for post in collections.news %}
+      <li class="news-item">
+        {%- if post.data.image %}<img src="{{ post.data.image }}" alt="" loading="lazy">{% endif %}
+        <div>
+          <p class="news-item__meta"><time datetime="{{ post.data.date | isoDate }}">{{ post.data.date | readableDate }}</time>{% if post.data.category %}, {{ post.data.category }}{% endif %}</p>
+          <h2 class="h3"><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+          {%- if post.data.summary %}<p>{{ post.data.summary }}</p>{% endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- set s = { type: "press", background: "mist", heading: "In the press" } %}
+{% include "blocks/press.njk" %}

@@ -1,0 +1,13 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap wrap--narrow">
+    {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+    <div class="faq">
+      {%- for item in s.items %}
+      <details class="faq__item">
+        <summary>{{ item.question }}</summary>
+        <div class="prose">{{ item.answer | md | safe }}</div>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>

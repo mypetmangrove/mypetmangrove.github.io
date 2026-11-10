@@ -1,0 +1,8 @@
+[
+  { "from": "/home", "to": "/" },
+  { "from": "/ourmission", "to": "/how-it-works/" },
+  { "from": "/our-mission", "to": "/how-it-works/" },
+  { "from": "/about-us", "to": "/about/" },
+  { "from": "/contact-us", "to": "/contact/" },
+  { "from": "/admin", "to": "https://app.pagescms.org/" }
+]

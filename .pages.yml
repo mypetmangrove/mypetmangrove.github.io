@@ -1,0 +1,451 @@
+# Pages CMS: the editing dashboard for mypetmangrove.org
+# Sign in at https://app.pagescms.org with your GitHub account.
+# Every save publishes the website automatically in about a minute.
+
+media:
+  input: src/images
+  output: /images
+  rename: safe
+
+settings:
+  content:
+    merge: true
+
+components:
+  link:
+    type: object
+    fields:
+      - name: label
+        type: string
+      - name: url
+        label: Link (a page like /about/ or a full web address)
+        type: string
+  buttons:
+    type: object
+    label: Buttons
+    list:
+      max: 3
+      collapsible: true
+    fields:
+      - name: label
+        type: string
+      - name: url
+        label: Link
+        type: string
+  background:
+    type: select
+    label: Background color
+    options:
+      values:
+        - { name: white, label: White }
+        - { name: mist, label: Light gray }
+        - { name: foam, label: Light blue }
+        - { name: navy, label: Navy }
+        - { name: blue, label: Blue }
+  anchor:
+    type: string
+    label: Section ID (optional, lets you link to /page/#this-id)
+
+content:
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/pages
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    exclude: [pages.11tydata.js]
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - name: title
+        label: Page title (shows in the browser tab and Google)
+        type: string
+        required: true
+      - name: description
+        label: Short description for Google and link previews
+        type: text
+        options:
+          maxlength: 200
+      - name: published
+        label: Published
+        type: boolean
+        default: true
+      - name: sections
+        label: Sections (top to bottom)
+        type: block
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{type}: {heading}"
+        blockKey: type
+        blocks:
+          - name: hero
+            label: Homepage banner
+            fields:
+              - { name: heading, type: string, required: true }
+              - { name: text, type: text }
+              - { name: buttons, component: buttons }
+              - { name: note, label: Small note under buttons (Markdown), type: string }
+              - { name: image, type: image }
+              - { name: image_alt, label: Image description (for screen readers), type: string }
+          - name: page_header
+            label: Page title banner
+            fields:
+              - { name: heading, type: string }
+              - { name: text, type: text }
+              - { name: image, label: Background photo (optional), type: image }
+              - { name: buttons, component: buttons }
+          - name: split
+            label: Text and photo
+            fields:
+              - { name: heading, type: string }
+              - { name: subheading, type: string }
+              - { name: lead, label: Large intro text, type: text }
+              - { name: tags, label: Tags, type: string, list: true }
+              - { name: body, type: rich-text, options: { format: markdown } }
+              - { name: callout, label: Highlighted quote line, type: text }
+              - { name: button, component: link }
+              - { name: link, label: Arrow link, component: link }
+              - { name: image, type: image }
+              - { name: image_alt, label: Image description, type: string }
+              - { name: badge, label: Label on photo (Markdown), type: string }
+              - name: image_side
+                label: Photo side
+                type: select
+                options: { values: [right, left] }
+              - { name: boxed, label: Outlined box style, type: boolean }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: steps
+            label: Numbered steps
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: text }
+              - name: items
+                label: Steps
+                type: object
+                list: { collapsible: { collapsed: true, summary: "{title}" } }
+                fields:
+                  - { name: title, label: Short title on photo, type: string }
+                  - { name: subtitle, type: string }
+                  - { name: body, type: text }
+                  - { name: image, type: image }
+                  - { name: image_alt, label: Image description, type: string }
+                  - { name: url, label: Link, type: string }
+              - { name: link, component: link }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: cards
+            label: Cards
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: rich-text, options: { format: markdown } }
+              - name: items
+                label: Cards
+                type: object
+                list: { collapsible: { collapsed: true, summary: "{title}" } }
+                fields:
+                  - { name: title, type: string }
+                  - { name: body, type: rich-text, options: { format: markdown } }
+                  - { name: image, type: image }
+                  - { name: image_alt, label: Image description, type: string }
+                  - { name: url, label: Link, type: string }
+                  - { name: link_label, label: Link text (default "Learn more"), type: string }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: quote
+            label: Quote
+            fields:
+              - { name: text, type: text, required: true }
+              - { name: attribution, label: Who said it, type: string }
+              - { name: background, component: background }
+          - name: stats
+            label: Numbers
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: text }
+              - name: items
+                label: Numbers
+                type: object
+                list: { collapsible: { collapsed: true, summary: "{value} {label}" } }
+                fields:
+                  - { name: value, label: Number (leave empty for a live number), type: string }
+                  - { name: label, type: string }
+                  - { name: note, type: string }
+                  - name: live
+                    label: Live number from the teacher portal
+                    type: select
+                    options:
+                      values:
+                        - { name: growing, label: Seedlings growing }
+                        - { name: planted, label: Mangroves replanted }
+                        - { name: students, label: Students }
+                        - { name: schools, label: Schools }
+                        - { name: classes, label: Classes }
+                        - { name: seedlings, label: All seedlings }
+              - { name: source, label: Sources line (Markdown), type: string }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: band
+            label: Call-to-action band
+            fields:
+              - { name: heading, type: string, required: true }
+              - { name: text, type: rich-text, options: { format: markdown } }
+              - { name: buttons, component: buttons }
+              - { name: image, label: Background photo (optional), type: image }
+              - name: background
+                label: Color
+                type: select
+                options: { values: [{ name: navy, label: Navy }, { name: blue, label: Blue }] }
+              - { name: anchor, component: anchor }
+          - name: text
+            label: Text
+            fields:
+              - { name: heading, type: string }
+              - { name: body, type: rich-text, options: { format: markdown } }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: video
+            label: YouTube video
+            fields:
+              - { name: heading, type: string }
+              - { name: body, type: rich-text, options: { format: markdown } }
+              - { name: youtube, label: YouTube link, type: string, required: true }
+              - { name: caption, type: string }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: press
+            label: Press list (edit items under "Press and recognition")
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: text }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: faq
+            label: Questions and answers
+            fields:
+              - { name: heading, type: string }
+              - name: items
+                label: Questions
+                type: object
+                list: { collapsible: { collapsed: true, summary: "{question}" } }
+                fields:
+                  - { name: question, type: string }
+                  - { name: answer, type: rich-text, options: { format: markdown } }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: form
+            label: Contact form
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: rich-text, options: { format: markdown } }
+              - name: default_topic
+                label: Topic selected at first
+                type: select
+                options:
+                  values:
+                    - { name: general, label: General question }
+                    - { name: school, label: School program }
+                    - { name: visit, label: Classroom visit }
+                    - { name: volunteer, label: Volunteering }
+                    - { name: partner, label: Partnership }
+                    - { name: support, label: Supporting or donating }
+                    - { name: lesson, label: Lesson request }
+              - { name: fixed_topic, label: Hide the topic menu, type: boolean }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: events
+            label: Planting days list
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: rich-text, options: { format: markdown } }
+              - { name: empty_text, label: Message when no dates are scheduled, type: text }
+              - { name: show_past, label: Show past planting days, type: boolean }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: gallery
+            label: Photo gallery
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: text }
+              - { name: link, component: link }
+              - name: images
+                label: Photos
+                type: object
+                list: { collapsible: { collapsed: true, summary: "{alt}" } }
+                fields:
+                  - { name: image, type: image }
+                  - { name: alt, label: Image description, type: string }
+                  - { name: caption, type: string }
+              - { name: square, label: Square tiles (Instagram style), type: boolean }
+              - { name: live, label: Add classroom photos you approved in the portal, type: boolean }
+              - { name: live_count, label: How many classroom photos, type: number }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+          - name: lesson_bands
+            label: Lesson library grade links
+            fields:
+              - { name: heading, type: string }
+              - { name: intro, type: rich-text, options: { format: markdown } }
+              - { name: background, component: background }
+              - { name: anchor, component: anchor }
+
+  - name: lessons
+    label: Lesson library
+    type: collection
+    path: src/lessons
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    exclude: [lessons.11tydata.js]
+    view:
+      fields: [title, grades, published]
+      primary: title
+    fields:
+      - { name: title, type: string, required: true }
+      - name: grades
+        label: Grade levels (leave empty for all grades)
+        type: select
+        options:
+          multiple: true
+          values: [Pre-K, K, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+      - name: topic
+        type: select
+        options:
+          values: [Mangrove biology, Blue carbon, Coastal resilience, Marine life, Indian River Lagoon, Fieldwork and restoration, Full curriculum]
+      - { name: duration, label: Time needed, type: string }
+      - { name: summary, label: One-sentence summary, type: text }
+      - { name: standards, label: Standards (e.g. Florida B.E.S.T. / NGSSS codes), type: string }
+      - { name: materials, type: rich-text, options: { format: markdown } }
+      - name: files
+        label: Downloads (PDF, Word, slides)
+        type: file
+        options:
+          multiple: { max: 10 }
+          categories: [document, spreadsheet, image]
+      - { name: link, label: Outside link (e.g. Google Drive folder), type: string }
+      - { name: link_label, label: Outside link button text, type: string }
+      - { name: published, type: boolean, default: true }
+      - { name: body, label: Lesson steps, type: rich-text, options: { format: markdown } }
+
+  - name: events
+    label: Planting days
+    type: collection
+    path: src/events
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    exclude: [events.11tydata.js]
+    view:
+      fields: [title, date, published]
+      primary: title
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, type: string, required: true }
+      - { name: date, type: date, required: true, options: { format: yyyy-MM-dd } }
+      - { name: time, label: Time (e.g. 9:00 to 11:30 AM), type: string }
+      - { name: location, type: string }
+      - { name: ages, label: Who can come, type: string }
+      - { name: bring, label: What to bring, type: string }
+      - { name: rsvp_url, label: RSVP link (leave empty to use the website form), type: string }
+      - { name: published, type: boolean, default: true }
+      - { name: body, label: Details, type: rich-text, options: { format: markdown } }
+
+  - name: news
+    label: News
+    type: collection
+    path: src/news
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    exclude: [news.11tydata.js]
+    view:
+      fields: [title, date, published]
+      primary: title
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, type: string, required: true }
+      - { name: date, type: date, required: true, options: { format: yyyy-MM-dd } }
+      - name: category
+        type: select
+        options: { values: [Recognition, Planting day, Classrooms, Program news] }
+      - { name: summary, type: text }
+      - { name: image, type: image }
+      - { name: image_alt, label: Image description, type: string }
+      - { name: published, type: boolean, default: true }
+      - { name: body, type: rich-text, options: { format: markdown } }
+
+  - name: press
+    label: Press and recognition
+    type: file
+    path: src/_data/press.json
+    format: json
+    list: true
+    fields:
+      - { name: outlet, label: Outlet or organization, type: string }
+      - { name: title, type: string }
+      - { name: url, label: Link, type: string }
+      - { name: date, type: string, label: Date (YYYY-MM-DD, optional) }
+      - name: kind
+        type: select
+        options: { values: [Award, Feature, Interview, Podcast, Video] }
+
+  - name: library
+    label: Lesson library page text
+    type: file
+    path: src/_data/library.json
+    format: json
+    fields:
+      - { name: heading, type: string }
+      - { name: intro, type: text }
+      - { name: empty_text, label: Message for grades with no lessons yet, type: text }
+      - { name: request_label, label: Request link text, type: string }
+      - { name: topics, label: Topic filter options, type: string, list: true }
+
+  - name: site
+    label: Site settings
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - { name: name, label: Organization name, type: string }
+      - { name: slogan, type: string }
+      - { name: description, label: Default description for Google, type: text }
+      - { name: url, label: Website address, type: string }
+      - { name: email, label: Contact email, type: string }
+      - { name: instagram, type: string }
+      - { name: youtube, type: string }
+      - { name: linkedin, type: string }
+      - { name: donate_url, label: Donate button link (leave empty until you have a donation page), type: string }
+      - { name: adopt_url, label: Adopt a Mangrove button link, type: string }
+      - { name: footer_blurb, label: Footer text, type: text }
+      - { name: newsletter_heading, type: string }
+      - { name: newsletter_text, type: text }
+      - name: menu
+        label: Main menu
+        type: object
+        list: { collapsible: { collapsed: true, summary: "{label}" } }
+        fields:
+          - { name: label, type: string }
+          - { name: url, type: string }
+          - name: children
+            label: Dropdown links
+            type: object
+            list: { collapsible: { collapsed: true, summary: "{label}" } }
+            fields:
+              - { name: label, type: string }
+              - { name: url, type: string }
+      - name: portal
+        label: Teacher portal connection (from Supabase, see setup guide step 4)
+        type: object
+        fields:
+          - { name: supabase_url, label: Project URL, type: string }
+          - { name: supabase_key, label: Publishable key, type: string }
+
+  - name: redirects
+    label: Redirects for old addresses
+    type: file
+    path: src/_data/redirects.json
+    format: json
+    list: true
+    fields:
+      - { name: from, label: Old address (e.g. /ourmission), type: string }
+      - { name: to, label: New address, type: string }

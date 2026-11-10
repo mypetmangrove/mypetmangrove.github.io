@@ -1,0 +1,19 @@
+<section class="block block--gallery bg-{{ s.background or 'white' }}{% if not (s.images and s.images.length) %} is-empty{% endif %}"{% if s.anchor %} id="{{ s.anchor }}"{% endif %}>
+  <div class="wrap">
+    <div class="block-head{% if s.link and s.link.label %} block-head--row{% endif %}">
+      {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+      {%- if s.link and s.link.label %}<a class="arrow-link" href="{{ s.link.url }}">{{ s.link.label }}</a>{% endif %}
+    </div>
+    {%- if s.intro %}<p class="lead block-intro">{{ s.intro }}</p>{% endif %}
+    <ul class="gallery{% if s.square %} gallery--square{% endif %}" {% if s.live %}data-live-gallery="{{ s.live_count or 8 }}"{% endif %}>
+      {%- for img in s.images %}
+      <li class="gallery__item">
+        {%- if s.link and s.link.url and s.square %}<a href="{{ s.link.url }}">{% endif %}
+        <img src="{{ img.image }}" alt="{{ img.alt }}" loading="lazy">
+        {%- if s.link and s.link.url and s.square %}</a>{% endif %}
+        {%- if img.caption %}<p class="gallery__caption">{{ img.caption }}</p>{% endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

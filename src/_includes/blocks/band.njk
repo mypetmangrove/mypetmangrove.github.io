@@ -1,0 +1,14 @@
+<section class="band bg-{{ s.background or 'blue' }}{% if s.image %} band--image{% endif %}"{% if s.anchor %} id="{{ s.anchor }}"{% endif %}>
+  {%- if s.image %}<img class="band__bg" src="{{ s.image }}" alt="" loading="lazy">{% endif %}
+  <div class="wrap band__inner">
+    <div>
+      <h2 class="h2">{{ s.heading }}</h2>
+      {%- if s.text %}<div class="band__text">{{ s.text | md | safe }}</div>{% endif %}
+    </div>
+    {%- if s.buttons and s.buttons.length %}
+    <div class="btn-row">
+      {%- for b in s.buttons %}<a class="btn {{ 'btn--sky' if loop.first else 'btn--outline-light' }}" href="{{ b.url }}">{{ b.label }}</a>{% endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>

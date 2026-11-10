@@ -1,0 +1,56 @@
+{
+  "name": "My Pet Mangrove",
+  "slogan": "Adopt a Mangrove, Save the Planet.",
+  "description": "My Pet Mangrove is a youth-led program on Florida's Indian River Lagoon where students collect mangrove propagules, raise them as class pets, learn the science, and replant them along the coast.",
+  "url": "https://www.mypetmangrove.org",
+  "email": "mypetmangrove@gmail.com",
+  "phone": "",
+  "instagram": "https://www.instagram.com/mypetmangrove/",
+  "linkedin": "https://www.linkedin.com/in/alex-webster-450795326/",
+  "youtube": "https://www.youtube.com/watch?v=dS_Z_FJvWJU",
+  "donate_url": "",
+  "adopt_url": "/school-program/",
+  "footer_blurb": "To empower youth to restore Florida's ecosystem by replanting mangroves and fostering environmental stewardship through hands-on learning.",
+  "newsletter_heading": "Planting day news",
+  "newsletter_text": "Sign up to hear about planting days, classroom milestones, and program news.",
+  "menu": [
+    {
+      "label": "The Program",
+      "url": "/how-it-works/",
+      "children": [
+        { "label": "How it works", "url": "/how-it-works/" },
+        { "label": "School program", "url": "/school-program/" },
+        { "label": "Lesson library", "url": "/teacher-resources/" }
+      ]
+    },
+    {
+      "label": "Get Involved",
+      "url": "/get-involved/",
+      "children": [
+        { "label": "Ways to get involved", "url": "/get-involved/" },
+        { "label": "Planting days", "url": "/get-involved/#planting-days" },
+        { "label": "Support our growth", "url": "/get-involved/#support" }
+      ]
+    },
+    {
+      "label": "Learn",
+      "url": "/why-mangroves/",
+      "children": [
+        { "label": "Why mangroves", "url": "/why-mangroves/" },
+        { "label": "News and recognition", "url": "/news/" }
+      ]
+    },
+    {
+      "label": "About",
+      "url": "/about/",
+      "children": [
+        { "label": "About us", "url": "/about/" },
+        { "label": "Contact", "url": "/contact/" }
+      ]
+    }
+  ],
+  "portal": {
+    "supabase_url": "",
+    "supabase_key": ""
+  }
+}

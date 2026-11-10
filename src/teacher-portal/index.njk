@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+title: Teacher portal
+description: Sign in to track your class's mangrove seedlings, roster, photos, and certificates.
+permalink: /teacher-portal/
+robots: noindex
+body_class: portal-page
+hide_footer: true
+extra_css: /assets/css/portal.css
+extra_js:
+  - /assets/vendor/supabase.js
+  - /assets/js/portal.js
+---
+<div class="portal" data-portal>
+  <div class="portal__loading" data-portal-loading>
+    <p>Loading the teacher portal…</p>
+    <noscript><p>The teacher portal needs JavaScript turned on.</p></noscript>
+  </div>
+</div>
+<footer class="portal-footer">
+  <div class="wrap portal-footer__inner">
+    <p>© {{ build.year }} My Pet Mangrove</p>
+    <p><a href="/teacher-resources/">Lesson library</a> <a href="/privacy/">Privacy</a> <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  </div>
+</footer>

@@ -1,0 +1,21 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap">
+    {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+    {%- if s.intro %}<p class="lead block-intro">{{ s.intro }}</p>{% endif %}
+    <ol class="steps">
+      {%- for item in s.items %}
+      <li class="step">
+        {%- if item.url %}<a class="step__link" href="{{ item.url }}">{% endif %}
+        <div class="step__media">
+          {%- if item.image %}<img src="{{ item.image }}" alt="{{ item.image_alt }}" loading="lazy">{% endif %}
+          <p class="step__label"><span class="step__num">{{ loop.index }}</span> {{ item.title }}</p>
+        </div>
+        {%- if item.subtitle %}<h3 class="step__title">{{ item.subtitle }}</h3>{% endif %}
+        {%- if item.body %}<p class="step__body">{{ item.body }}</p>{% endif %}
+        {%- if item.url %}</a>{% endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+    {%- if s.link and s.link.label %}<p><a class="arrow-link" href="{{ s.link.url }}">{{ s.link.label }}</a></p>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,20 @@
+{
+  "name": "mypetmangrove-site",
+  "private": true,
+  "description": "My Pet Mangrove website, lesson library and teacher portal",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.7",
+    "markdown-it": "14.3.2"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

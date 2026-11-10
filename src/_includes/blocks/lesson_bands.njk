@@ -1,0 +1,14 @@
+{% include "blocks/_open.njk" %}
+  <div class="wrap">
+    <div class="block-head{% if s.intro %} block-head--split{% endif %}">
+      {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+      {%- if s.intro %}<div class="block-head__intro">{{ s.intro | md | safe }}</div>{% endif %}
+    </div>
+    <ul class="band-links">
+      {%- for b in gradeBands %}
+      {%- set count = (collections.lessons | lessonsInBand(b.id)).length %}
+      <li><a href="/teacher-resources/#{{ b.id }}"><span class="band-links__label">{{ b.label }}</span><span class="band-links__count">{{ count }} {{ "resource" if count == 1 else "resources" }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

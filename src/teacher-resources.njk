@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+title: Lesson library
+description: Free mangrove lesson plans and curricula for Pre-K through grade 12, organized by grade.
+permalink: /teacher-resources/
+---
+<section class="page-header">
+  <div class="wrap page-header__inner">
+    <h1 class="page-header__title">{{ library.heading }}</h1>
+    <p class="page-header__text">{{ library.intro }}</p>
+  </div>
+  <svg class="tideline tideline--short" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 16 C 240 6, 480 6, 720 14 S 1200 24, 1440 12" />
+    <path d="M0 30 C 260 22, 520 24, 760 28 S 1220 36, 1440 26" />
+  </svg>
+</section>
+
+<section class="block bg-white library" data-library>
+  <div class="wrap">
+    <div class="library-tools">
+      <fieldset class="grade-picker">
+        <legend>Grade</legend>
+        <div class="grade-picker__options">
+          <label><input type="radio" name="grade" value="all" checked><span>All</span></label>
+          {%- for g in gradeList %}
+          <label><input type="radio" name="grade" value="{{ g }}"><span>{{ g }}</span></label>
+          {%- endfor %}
+        </div>
+      </fieldset>
+      <div class="library-tools__row">
+        <div class="field">
+          <label for="lib-topic">Topic</label>
+          <select id="lib-topic" data-topic>
+            <option value="">All topics</option>
+            {%- for t in library.topics %}<option>{{ t }}</option>{% endfor %}
+          </select>
+        </div>
+        <div class="field">
+          <label for="lib-search">Search</label>
+          <input id="lib-search" type="search" placeholder="Try “roots” or “carbon”" data-search>
+        </div>
+      </div>
+    </div>
+
+    {%- for band in gradeBands %}
+    {%- set bandLessons = collections.lessons | lessonsInBand(band.id) %}
+    <section class="lesson-band" id="{{ band.id }}" data-band="{{ band.grades | join(' ') }}" aria-labelledby="band-{{ band.id }}">
+      <h2 class="h3 lesson-band__title" id="band-{{ band.id }}">{{ band.label }}</h2>
+      <ul class="lessons">
+        {%- for l in bandLessons %}
+        <li class="lesson-card" data-grades="{{ l.data.grades | join(' ') }}" data-topic-value="{{ l.data.topic }}" data-text="{{ (l.data.title + ' ' + (l.data.summary or '') + ' ' + (l.data.topic or '')) | lower }}">
+          <p class="lesson-card__grades">{{ l.data.grades | gradeRange }}</p>
+          <h3 class="lesson-card__title"><a href="{{ l.url }}">{{ l.data.title }}</a></h3>
+          {%- if l.data.summary %}<p class="lesson-card__summary">{{ l.data.summary }}</p>{% endif %}
+          <ul class="lesson-card__meta">
+            {%- if l.data.topic %}<li>{{ l.data.topic }}</li>{% endif %}
+            {%- if l.data.duration %}<li>{{ l.data.duration }}</li>{% endif %}
+            {%- if l.data.files and l.data.files.length %}<li>{{ l.data.files.length }} download{{ "s" if l.data.files.length > 1 }}</li>{% endif %}
+          </ul>
+        </li>
+        {%- endfor %}
+      </ul>
+      <p class="empty-note lesson-band__empty"{% if bandLessons.length %} hidden{% endif %}>{{ library.empty_text }} <a href="/contact/?topic=lesson">{{ library.request_label }}</a></p>
+    </section>
+    {%- endfor %}
+  </div>
+</section>

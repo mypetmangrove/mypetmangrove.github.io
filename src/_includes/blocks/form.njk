@@ -1,0 +1,136 @@
+{%- set topic = s.default_topic or "general" %}
+{% include "blocks/_open.njk" %}
+  <div class="wrap split split--form">
+    <div class="split__copy">
+      {%- if s.heading %}<h2 class="h2">{{ s.heading }}</h2>{% endif %}
+      {%- if s.intro %}<div class="prose">{{ s.intro | md | safe }}</div>{% endif %}
+      <p><a class="footer-email footer-email--dark" href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+    <form class="form-card" data-inquiry-form data-fixed-topic="{{ 'true' if s.fixed_topic else 'false' }}" novalidate>
+      <div class="field{% if s.fixed_topic %} visually-hidden{% endif %}">
+        <label for="f-topic-{{ sectionIndex }}">What can we help with?</label>
+        <select id="f-topic-{{ sectionIndex }}" name="kind" data-topic-select>
+          <option value="general"{% if topic == "general" %} selected{% endif %}>A general question</option>
+          <option value="school"{% if topic == "school" %} selected{% endif %}>Starting a school program</option>
+          <option value="visit"{% if topic == "visit" %} selected{% endif %}>A classroom visit</option>
+          <option value="volunteer"{% if topic == "volunteer" %} selected{% endif %}>Volunteering at a planting day</option>
+          <option value="partner"{% if topic == "partner" %} selected{% endif %}>Partnering on restoration</option>
+          <option value="support"{% if topic == "support" %} selected{% endif %}>Supporting or donating</option>
+          <option value="lesson"{% if topic == "lesson" %} selected{% endif %}>Requesting a lesson plan</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name-{{ sectionIndex }}">Your name <span class="req">(required)</span></label>
+          <input id="f-name-{{ sectionIndex }}" name="name" autocomplete="name" required maxlength="120">
+        </div>
+        <div class="field">
+          <label for="f-email-{{ sectionIndex }}">Email <span class="req">(required)</span></label>
+          <input id="f-email-{{ sectionIndex }}" name="email" type="email" autocomplete="email" required maxlength="200">
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-org-{{ sectionIndex }}">School or organization</label>
+        <input id="f-org-{{ sectionIndex }}" name="organization" autocomplete="organization" maxlength="160">
+      </div>
+
+      <fieldset class="topic-fields" data-topic-fields="school visit lesson">
+        <legend class="visually-hidden">Classroom details</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-grade-{{ sectionIndex }}">Grade level</label>
+            <select id="f-grade-{{ sectionIndex }}" name="grade">
+              <option value="">Choose…</option>
+              {%- for g in gradeList %}<option>{{ g }}</option>{% endfor %}
+              <option>Mixed grades</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-students-{{ sectionIndex }}">Number of students</label>
+            <input id="f-students-{{ sectionIndex }}" name="students" inputmode="numeric" maxlength="6">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-county-{{ sectionIndex }}">County</label>
+            <input id="f-county-{{ sectionIndex }}" name="county" maxlength="80">
+          </div>
+          <div class="field">
+            <label for="f-start-{{ sectionIndex }}">When would you like to start?</label>
+            <select id="f-start-{{ sectionIndex }}" name="start">
+              <option value="">Choose…</option>
+              <option>This semester</option>
+              <option>Next semester</option>
+              <option>Next school year</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="topic-fields" data-topic-fields="visit">
+        <legend class="visually-hidden">Visit details</legend>
+        <div class="field">
+          <label for="f-visit-{{ sectionIndex }}">Type of visit</label>
+          <select id="f-visit-{{ sectionIndex }}" name="visit_type">
+            <option>Classroom presentation</option>
+            <option>Virtual visit</option>
+            <option>Setup session before seedlings arrive</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="topic-fields" data-topic-fields="volunteer">
+        <legend class="visually-hidden">Volunteer details</legend>
+        <div class="field">
+          <span class="label">How would you like to help?</span>
+          <div class="checks">
+            <label><input type="checkbox" name="help" value="Planting days"> Planting days</label>
+            <label><input type="checkbox" name="help" value="Propagule collection"> Propagule collection</label>
+            <label><input type="checkbox" name="help" value="Classroom visits"> Classroom visits</label>
+            <label><input type="checkbox" name="help" value="Media and design"> Media and design</label>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">Are you 18 or older?</span>
+          <div class="checks checks--inline">
+            <label><input type="radio" name="adult" value="yes" checked data-adult> Yes</label>
+            <label><input type="radio" name="adult" value="no" data-adult> No</label>
+          </div>
+        </div>
+        <div class="field-row" data-guardian hidden>
+          <div class="field">
+            <label for="f-gname-{{ sectionIndex }}">Parent or guardian name</label>
+            <input id="f-gname-{{ sectionIndex }}" name="guardian_name" maxlength="120">
+          </div>
+          <div class="field">
+            <label for="f-gemail-{{ sectionIndex }}">Parent or guardian email</label>
+            <input id="f-gemail-{{ sectionIndex }}" name="guardian_email" type="email" maxlength="200">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="topic-fields" data-topic-fields="partner">
+        <legend class="visually-hidden">Partnership details</legend>
+        <div class="field">
+          <label for="f-ptype-{{ sectionIndex }}">Type of partner</label>
+          <select id="f-ptype-{{ sectionIndex }}" name="partner_type">
+            <option>School or district</option>
+            <option>Environmental group</option>
+            <option>University or research institute</option>
+            <option>Business or sponsor</option>
+            <option>Media</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="f-msg-{{ sectionIndex }}">Message</label>
+        <textarea id="f-msg-{{ sectionIndex }}" name="message" rows="5" maxlength="4000"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn btn--blue" type="submit">Send message</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
