@@ -18,7 +18,7 @@
     </div>
     {%- if s.image %}
     <figure class="split__media">
-      <img src="{{ s.image }}" alt="{{ s.image_alt }}" loading="lazy">
+      <img src="{{ s.image }}" alt="{{ s.image_alt }}" loading="lazy"{% if s.image_shape == 'portrait' %} class="is-portrait"{% endif %}{% if s.image_focus %} style="object-position: 50% {{ {'top':'0%','center':'50%','bottom':'100%'}[s.image_focus] or '30%' }}"{% endif %}>
       {%- if s.badge %}<figcaption class="badge">{{ s.badge | mdInline | safe }}</figcaption>{% endif %}
     </figure>
     {%- endif %}

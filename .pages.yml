@@ -109,6 +109,14 @@ content:
               - { name: link, label: Arrow link, component: link }
               - { name: image, type: image }
               - { name: image_alt, label: Image description, type: string }
+              - name: image_shape
+                label: Photo shape
+                type: select
+                options: { values: [landscape, portrait] }
+              - name: image_focus
+                label: Keep in view when cropped
+                type: select
+                options: { values: [top, center, bottom] }
               - { name: badge, label: Label on photo (Markdown), type: string }
               - name: image_side
                 label: Photo side

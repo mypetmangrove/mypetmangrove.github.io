@@ -17,8 +17,8 @@ sections:
         url: /school-program/
       - title: Volunteer
         body: Help collect propagules and plant seedlings along the lagoon.
-        image: /images/site/involve-planting.jpg
-        image_alt: Volunteers walking across a mudflat
+        image: /images/site/restore-ksc-nursery-transplant.jpg
+        image_alt: A restoration team member placing repotted mangrove seedlings into a marsh channel
         url: "#planting-days"
       - title: Partner
         body: "Scientists: mentor or partner with us. Media makers: help us tell the story."

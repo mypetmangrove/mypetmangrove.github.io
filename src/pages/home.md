@@ -72,14 +72,14 @@ sections:
       - title: Learn
         subtitle: Learn the science. Lead the change.
         body: Students uncover how mangroves store carbon, protect coastlines, and sustain marine life.
-        image: /images/site/field-specimen.jpg
-        image_alt: Two students in hard hats examining a specimen on a research vessel
+        image: /images/site/step-learn.jpg
+        image_alt: A student measuring a seedling with a ruler
         url: /how-it-works/#learn
       - title: Replant
         subtitle: From classroom cup to coastal forest
         body: Students unite to return their "pets" to the lagoon, transforming learning into legacy.
-        image: /images/site/step-replant.jpg
-        image_alt: A child planting a mangrove seedling in mud along the shore
+        image: /images/site/restore-ksc-seedling-rocks.jpg
+        image_alt: A young red mangrove taking root among the rocks of a restored shoreline at Kennedy Space Center
         url: /how-it-works/#replant
   - type: stats
     background: white
@@ -114,6 +114,8 @@ sections:
       label: Watch the Slingshot video
       url: /about/#video
     image: /images/site/alex-headshot.jpg
+    image_shape: portrait
+    image_focus: top
     image_alt: Portrait of Alex Webster, founder of My Pet Mangrove, wearing award medals
     badge: "**National Geographic Society**<br>2026 Slingshot Challenge Top Honors"
   - type: quote
@@ -161,8 +163,8 @@ sections:
         url: /school-program/
       - title: Planting days
         body: Volunteer at a planting event.
-        image: /images/site/involve-planting.jpg
-        image_alt: Volunteers in matching shirts walking across a mudflat
+        image: /images/site/restore-ksc-nursery-transplant.jpg
+        image_alt: A restoration team member placing repotted mangrove seedlings into a marsh channel
         url: /get-involved/#planting-days
       - title: Partnerships
         body: Partner with us on mangrove restoration.

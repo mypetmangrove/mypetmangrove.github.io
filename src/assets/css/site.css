@@ -346,6 +346,7 @@ h1, h2, h3, h4, .h2, .h3, .h4 {
 .bg-navy .split__sub, .bg-blue .split__sub { color: var(--sky); }
 .split__media { margin: 0; position: relative; }
 .split__media img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; object-position: 50% 30%; }
+.split__media img.is-portrait { aspect-ratio: 4 / 5; }
 .split--boxed { gap: 0; align-items: stretch; }
 .split--boxed .split__copy {
   border: 2px solid var(--foam); outline: 1px solid var(--line); outline-offset: -1px;

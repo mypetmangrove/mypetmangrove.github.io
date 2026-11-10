@@ -3,8 +3,8 @@ title: My Pet Mangrove receives Top Honors in the 2026 Slingshot Challenge
 date: 2026-05-12
 category: Recognition
 summary: National Geographic named My Pet Mangrove one of five Top Honors projects, chosen from more than 2,300 video submissions from 104 countries.
-image: /images/site/alex-award.jpg
-image_alt: Alex Webster holding the Slingshot Challenge Top Honors award
+image: /images/site/natgeo-square.jpg
+image_alt: 2026 Slingshot Challenge award recipients and National Geographic staff cheering in the plaza outside National Geographic headquarters
 published: true
 ---
 On May 12, 2026, the National Geographic Society announced the Top Honors projects of the 2026 Slingshot Challenge. My Pet Mangrove was one of five, chosen from more than 2,300 video submissions by 5,900+ young people in 104 countries. Each Top Honors project received $10,000.

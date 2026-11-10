@@ -52,8 +52,8 @@ sections:
     button:
       label: Browse the lesson library
       url: /teacher-resources/
-    image: /images/site/field-specimen.jpg
-    image_alt: Two students in hard hats examining a specimen on a research vessel
+    image: /images/site/step-learn.jpg
+    image_alt: A student measuring a seedling
   - type: split
     anchor: replant
     background: mist
@@ -65,8 +65,8 @@ sections:
       - **Planting day.** Seedlings go in along degraded shorelines at local partner sites.
       - **Built to last.** Planted at the right elevation for the tides, with survival tracked yearly.
       - **The loop restarts.** Next year's class collects new propagules.
-    image: /images/site/step-replant.jpg
-    image_alt: A child planting a mangrove seedling
+    image: /images/site/restore-ksc-seedling-rocks.jpg
+    image_alt: A young red mangrove taking root among the rocks of a restored shoreline at Kennedy Space Center
   - type: band
     background: blue
     heading: Bring the loop to your classroom

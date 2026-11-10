@@ -39,6 +39,8 @@ sections:
       that sustainability begins not in policy or theory, but in curiosity, care, and the simple act
       of planting a seed.
     image: /images/site/alex-headshot.jpg
+    image_shape: portrait
+    image_focus: top
     image_alt: Portrait of Alex Webster, founder of My Pet Mangrove, wearing award medals
   - type: gallery
     background: mist

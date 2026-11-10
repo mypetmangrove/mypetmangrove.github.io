@@ -87,8 +87,25 @@ sections:
       - Pollution and nutrient runoff
       - Boat damage
       - Climate stress: hard freezes, and a northward push into salt marsh
-    image: /images/site/lagoon.jpg
-    image_alt: Mangrove-lined shore of a calm lagoon
+    image: /images/site/restore-ksc-planting-1.jpg
+    image_alt: A Kennedy Space Center environmental team member rescuing mangrove seedlings on the Indian River Lagoon shoreline so they can be replanted (NASA photo, public domain)
+  - type: gallery
+    background: white
+    heading: Restoration in action
+    intro: Rescuing, growing, and replanting mangroves along Florida's coast.
+    images:
+      - image: /images/site/restore-ksc-planting-1.jpg
+        alt: A restoration team member rescuing mangrove seedlings on the Indian River Lagoon shoreline
+        caption: Rescuing seedlings for replanting (NASA)
+      - image: /images/site/restore-ksc-planting-2.jpg
+        alt: A restoration team member working along a rocky lagoon shoreline
+        caption: Shoreline restoration at Kennedy Space Center (NASA)
+      - image: /images/site/restore-ksc-nursery-transplant.jpg
+        alt: Repotted mangrove seedlings being placed into a marsh channel
+        caption: Repotted seedlings going back into the marsh (NASA)
+      - image: /images/site/restore-propagule-mudflat.jpg
+        alt: A mangrove propagule sprouting upright on an open mudflat
+        caption: A propagule taking root on its own
   - type: band
     background: navy
     image: /images/site/roots-banner.jpg
