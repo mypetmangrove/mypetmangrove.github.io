@@ -68,6 +68,9 @@ sections:
       - image: /images/site/convening-booth.jpg
         alt: Alex at the My Pet Mangrove table at National Geographic's Connect to Create convening
         caption: National Geographic Connect to Create convening
+      - image: /images/uploads/convening-roundtable-1.jpg
+        alt: Alex speaking with fellow young changemakers around a conference table at National Geographic
+        caption: Sharing ideas at the Youth Changemakers Convening
       - image: /images/site/award-certificate.jpg
         alt: Alex holding a certificate of recognition
         caption: Recognized for community impact

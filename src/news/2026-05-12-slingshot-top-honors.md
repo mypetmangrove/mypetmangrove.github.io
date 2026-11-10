@@ -15,6 +15,8 @@ The other Top Honors projects were Homes for Hornbills (Thailand), Lighting Para
 
 Our 60-second video, *You want WHAT for Christmas?*, was published by National Geographic Education. [Watch it on YouTube](https://www.youtube.com/watch?v=dS_Z_FJvWJU).
 
+![Alex Webster holding a sprouting red mangrove propagule, in a still from the Slingshot Challenge video](/images/uploads/slingshot-still-propagule.jpg)
+
 ![Grid of portraits of the 2026 Slingshot Challenge award recipients](/images/site/slingshot-recipients.jpg)
 
 The award goes toward more classrooms, a teacher kit any teacher can run on their own, and community planting days with our restoration partners.
