@@ -12,8 +12,8 @@ sections:
     items:
       - title: Teach
         body: Bring youth-led mangrove education to your school.
-        image: /images/site/youth-ocean-summit.jpg
-        image_alt: Students at the 2026 Youth Ocean Conservation Summit
+        image: /images/site/involve-schools.jpg
+        image_alt: Students working with seedlings at a classroom table
         url: /school-program/
       - title: Volunteer
         body: Help collect propagules and plant seedlings along the lagoon.
